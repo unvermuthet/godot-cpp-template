@@ -17,25 +17,25 @@ jobs:
         target-type: [template_debug]
         target:
           [
-            { platform: linux, arch: x86_64, os: ubuntu-22.04 },
+            { platform: linux, arch: x86_64, os: ubuntu-20.04 },
             { platform: windows, arch: x86_64, os: windows-latest },
             { platform: windows, arch: x86_32, os: windows-latest },
             { platform: macos, arch: universal, os: macos-latest },
             { platform: ios, arch: arm64, os: macos-latest },
-            { platform: android, arch: arm64, os: ubuntu-22.04 },
-            { platform: android, arch: arm32, os: ubuntu-22.04 },
-            { platform: android, arch: x86_64, os: ubuntu-22.04 },
-            { platform: android, arch: x86_32, os: ubuntu-22.04 },
-            { platform: web, arch: wasm32, os: ubuntu-22.04 },
+            { platform: android, arch: arm64, os: ubuntu-20.04 },
+            { platform: android, arch: arm32, os: ubuntu-20.04 },
+            { platform: android, arch: x86_64, os: ubuntu-20.04 },
+            { platform: android, arch: x86_32, os: ubuntu-20.04 },
+            { platform: web, arch: wasm32, os: ubuntu-20.04 },
           ]
         include: # Also build a release version for these specific targets. Remove if you add template_release up top.
           - float-precision: single
             target-type: template_release
-            target: { platform: linux, arch: x86_64, os: ubuntu-22.04 }
+            target: { platform: linux, arch: x86_64, os: ubuntu-20.04 }
 
           - float-precision: double
             target-type: template_release
-            target: { platform: linux, arch: x86_64, os: ubuntu-22.04 }
+            target: { platform: linux, arch: x86_64, os: ubuntu-20.04 }
 
     runs-on: ${{ matrix.target.os }}
     steps:
@@ -109,7 +109,7 @@ jobs:
   # Merges all the build artifacts together into a single godot-cpp-template artifact.
   # If you comment out this step, all the builds will be uploaded individually.
   merge:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04
     needs: build
     steps:
       - name: Merge Artifacts
